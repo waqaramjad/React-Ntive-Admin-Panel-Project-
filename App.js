@@ -90,3 +90,5 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('UrbanDictionary', () => UrbanDictionary);
+
+console.disableYellowBox = true;
