@@ -12,8 +12,8 @@ import {
 import {
   Navigator
 } from 'react-native-deprecated-custom-components'
-import Home from './app/container/home'
-import Login from './app/components/loginSignup'
+import Home from './components/home/home'
+import Login from './components/LoginSignup/loginSignup'
 
 export default class UrbanDictionary extends Component {
   render() {

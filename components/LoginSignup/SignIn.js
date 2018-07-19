@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 // import {Text, View, Dimensions} from "react-native";
 import { StyleSheet, View, TouchableOpacity, Dimensions, StatusBar, Image, Text, Button, Modal } from 'react-native';
-import myStyles from './App.scss'
+// import myStyles from './App.scss'
 
 import {Actions} from "react-native-router-flux";
 import styles from "./styles";
@@ -69,8 +69,8 @@ export default class SignIn extends Component {
         <ButtonRoundBlue text="Login" onPress={() => this.signinAction()}
 />
 {/* <Text style={{ color:'black'}}> Hello iuwef lodfind dlfg  siufb ei fril w fwyvf  */}
- <Text style={myStyles.myClass}> Hello iuwef lodfind dlfg  siufb ei fril w fwyvf 
- </Text>
+ {/* <Text style={myStyles.myClass}> Hello iuwef lodfind dlfg  siufb ei fril w fwyvf 
+ </Text> */}
       </View>
     );
   }

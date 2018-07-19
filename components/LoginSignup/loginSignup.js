@@ -3,8 +3,8 @@ import React, {Component} from "react";
 import {View, Image, TouchableOpacity, Dimensions,} from "react-native";
 import {Actions} from "react-native-router-flux";
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
-import SignIn from "../container/SignIn";
-import SignUp from "../container/SignUp";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 import css from "@styles/style";
 import firebase from 'firebase';
 
