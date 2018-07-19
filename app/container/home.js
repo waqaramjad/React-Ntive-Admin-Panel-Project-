@@ -30,6 +30,7 @@ export default class Home extends Component {
         <View >
         <Text >
           <Text style={styles.titleText} >
+         
             {this.state.titleText}{'\n'}{'\n'}
           </Text>
           <Text >
