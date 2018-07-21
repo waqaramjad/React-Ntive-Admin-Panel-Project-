@@ -8,7 +8,7 @@ import {Actions} from "react-native-router-flux";
 import styles from "./styles";
 import {ButtonRoundBlue, IconInput}  from "@controls";
 import { Navigator } from 'react-native-deprecated-custom-components'
-import firebase from 'firebase';
+import firebase, { database } from 'firebase';
 import { StackNavigator } from 'react-navigation';
 
 
@@ -24,15 +24,54 @@ export default class SignIn extends Component {
 
 	 signinAction = () => {
     // return dispatch => {
-			const {userEmail,userPassword} = this.state;
+      var userEmail = 'ww@prtxdf.com'
+      var userPassword = '000000'
+			// const {userEmail,userPassword} = this.state;
+      var myNavigator = 	this.props.prop.navigator
 
+			// console.log(myNavigator)
 			console.log('done')
         firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
             .then((signedinUser) => {
-							alert('Login Success')
-							this.props.prop.navigator.push({
-								title: 'home'
-						})
+          
+              firebase.database().ref('users/'+signedinUser.user.uid+'/' ).once('value').then(function(snapshot) {
+               var checkForUser = snapshot.val()
+               console.log(checkForUser.user)
+              //  var checking = checkForUser.user
+               var checking = 'home'
+               console.log(checking)
+               console.log('checking')
+               console.log('navigator ')
+               
+
+              
+               if(checking=='admin')
+               {
+                console.log('inside')
+                alert('Login Success')
+                myNavigator.push({
+                  title: 'Admin'
+              })
+               
+               }
+               else if(checking=='home'){
+                console.log('else')
+                alert('Login fail')
+                myNavigator.push({
+                  title: 'home'
+              })
+
+               }
+                // console.log(snapshot.val())
+             
+             
+              });
+              console.log('check'+signedinUser.user.uid)
+
+						// 	alert('Login Success')
+						// 	this.props.prop.navigator.push({
+						// 		title: 'Admin'
+						// })
 							console.log('done 2')
 
             }).catch((err)=>{

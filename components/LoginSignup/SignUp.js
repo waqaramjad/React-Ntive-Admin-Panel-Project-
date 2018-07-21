@@ -45,12 +45,13 @@ export default class SignUp extends Component {
         }
         var str1 = userPassword;
     var str2 = cnfrmPass;
+    var myUId ; 
     //    
         var n = str1.localeCompare(str2);
         console.log(n)  
 
         if(n===-1){
-          alert('Password not matched ')
+          alert('Password not matched')
 
         }
         else{
@@ -60,10 +61,13 @@ export default class SignUp extends Component {
         firebase.auth().createUserWithEmailAndPassword(userEmail1,userPassword1)
             .then((createdUser) => {
                 alert('signed up successfully');
-                console.log(createdUser.uid)
+                console.log(createdUser.user.uid)
+                myUId = createdUser.user.uid ; 
+                console.log(myUId)
+
                 
   
-                firebase.database().ref('users/'  ).set(obj)
+                firebase.database().ref('users/'+myUId+'/'  ).set(obj)
                     .then(() => {
                     })
   

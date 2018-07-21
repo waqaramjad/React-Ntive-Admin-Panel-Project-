@@ -14,6 +14,7 @@ import {
 } from 'react-native-deprecated-custom-components'
 import Home from './components/home/home'
 import Login from './components/LoginSignup/loginSignup'
+import Admin from './components/Admin/Admin'
 
 export default class UrbanDictionary extends Component {
   render() {
@@ -55,6 +56,16 @@ export default class UrbanDictionary extends Component {
           if (route.title === 'home') {
             return ( <
               Home navigator = {
+                navigator
+              }
+
+              />
+            );
+          }
+
+          if (route.title === 'Admin') {
+            return ( <
+              Admin navigator = {
                 navigator
               }
 
