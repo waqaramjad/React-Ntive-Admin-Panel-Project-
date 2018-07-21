@@ -10,9 +10,12 @@ export default class SignUp extends Component {
   constructor(props){
 		super(props)
 		this.state={
-			userName:'',
+      FirstName:'',
+      lastName : '', 
+      CompanyName : '', 
 			userEmail:'', 
-			userPassword:''				
+      userPassword:''	, 
+      cnfrmPass : ''			
 		}
 	}
 
@@ -20,23 +23,45 @@ export default class SignUp extends Component {
 
    signupAction = () => {
     let uid ;
-        const {userName} = this.state;
+        const {FirstName} = this.state;
+        const {lastName} = this.state;
         const {userEmail} = this.state;
+        const {CompanyName} = this.state;
         const {userPassword} = this.state;
+        const {cnfrmPass} = this.state;
 
-        console.log(userName)
+        console.log(FirstName)
     
   
         var obj = {
   
-          name : userName,
+          Fname : FirstName,
+          lName : lastName, 
+          CompName : CompanyName , 
+
           mail : userEmail,
-          pass : userPassword
+          pass : userPassword , 
+          cnfrmPassword : cnfrmPass
         }
-  
-        firebase.auth().createUserWithEmailAndPassword(userEmail,userPassword)
+        var str1 = userPassword;
+    var str2 = cnfrmPass;
+    //    
+        var n = str1.localeCompare(str2);
+        console.log(n)  
+
+        if(n===-1){
+          alert('Password not matched ')
+
+        }
+        else{
+
+        var userEmail1 = 'pp@p.com'
+        var userPassword1 = '000000'
+        firebase.auth().createUserWithEmailAndPassword(userEmail1,userPassword1)
             .then((createdUser) => {
                 alert('signed up successfully');
+                console.log(createdUser.uid)
+                
   
                 firebase.database().ref('users/'  ).set(obj)
                     .then(() => {
@@ -48,6 +73,7 @@ export default class SignUp extends Component {
               alert(err.message)
               
           })
+        }
   
   }
 // }
@@ -64,15 +90,21 @@ export default class SignUp extends Component {
       <ScrollView>
         <View style={styles.container}>
           <View style={{marginTop: -20}}>
-            <IconInput   onChangeText= {userName => this.setState({userName})}
- placeholder="Name" image={require("@images/icon-password.png")}/>
+            <IconInput   onChangeText= {FirstName => this.setState({FirstName})}
+ placeholder="First Name" image={require("@images/icon-user.png")}/>
 
+<IconInput   onChangeText= {lastName => this.setState({lastName})}
+ placeholder="Last Name" image={require("@images/icon-user.png")}/>
+
+            <IconInput 	  onChangeText= {CompanyName => this.setState({CompanyName})}
+            placeholder="Company name" image={require("@images/icon-email.png")}/>
             <IconInput 	  onChangeText= {userEmail => this.setState({userEmail})}
             placeholder="Email" image={require("@images/icon-email.png")}/>
 
            
             
             <IconInput secureTextEntry={true}  onChangeText= {userPassword => this.setState({userPassword})} placeholder="Password" image={require("@images/icon-password.png")}/>
+            <IconInput secureTextEntry={true}  onChangeText= {cnfrmPass => this.setState({cnfrmPass})} placeholder=" Confirm Password" image={require("@images/icon-password.png")}/>
           </View>
           <ButtonRoundBlue
            onPress={this.signupAction}

@@ -11,15 +11,14 @@ import firebase from 'firebase';
 
 
 var config = {
-  apiKey: "AIzaSyDcyZcVQP8nuHcMJsKd5wHxoaerUW6apZQ",
-  authDomain: "waqarchatapp.firebaseapp.com",
-  databaseURL: "https://waqarchatapp.firebaseio.com",
-  projectId: "waqarchatapp",
-  storageBucket: "waqarchatapp.appspot.com",
-  messagingSenderId: "676235345078"
+  apiKey: "AIzaSyDzefR-KVbtwUmPnETvrtRyCX_S8dDv4Cs",
+  authDomain: "templete-assigment.firebaseapp.com",
+  databaseURL: "https://templete-assigment.firebaseio.com",
+  projectId: "templete-assigment",
+  storageBucket: "templete-assigment.appspot.com",
+  messagingSenderId: "840865053120"
 };
 firebase.initializeApp(config);
-
 
 
 
