@@ -21,7 +21,7 @@ export default class UrbanDictionary extends Component {
     return ( <
       Navigator initialRoute = {
         {
-          title: 'Admin',
+          title: 'Login',
           index: 0
         }
       }
@@ -54,20 +54,15 @@ export default class UrbanDictionary extends Component {
 
 
           if (route.title === 'home') {
-            return ( <
-              Home navigator = {
-                navigator
-              }
+            return ( < Home navigator = { navigator }
+              userUID= {route.userUID}
 
               />
             );
           }
 
           if (route.title === 'Admin') {
-            return ( <
-              Admin navigator = {
-                navigator
-              }
+            return ( <  Admin navigator = {navigator }
 
               />
             );

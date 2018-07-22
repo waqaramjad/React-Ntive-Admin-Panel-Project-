@@ -44,32 +44,13 @@ export default class Admin extends Component {
         console.log(a)
 
 
-      //  this.setState({myArray:dummy})
-      //  console.log(this.state.myArray)
-     
-// myArray.map((value, index)=>{
-//     console.log(value)
-//     console.log(index)
-  
-//    })
-
-// Object.keys(myArray).map(function(value, index) {
-//   console.log(value)
-//   console.log(myArray[0])
-//   console.log(index)
-
-// })
+      
 
     
      }
    
    )
-// var maraArray = [[34,345,345,345,234,2,234,234,544,435], 'dgd', 34 , 43534 , 'gdfgd', 'fsdfsd']
-// maraArray[0].map((value, index)=>{
-    // console.log(myArray)
-//     console.log(index)
-  
-//    })
+
   console.log('check')
   // console.log(myArray)
      
@@ -118,14 +99,14 @@ export default class Admin extends Component {
       
         <Content>
           <Card>
-            <CardItem header style={{backgroundColor: 'black'}}>
-              <Text >NativeBase</Text>
+            <CardItem header>
+              <Text >Admin users</Text>
             </CardItem>
             <CardItem>
               <Body>
                
                 <Text>
-                  {/* {this.state.myArray} */} ousfbosdfs 
+                  ousfbosdfs 
                 </Text>
               </Body>
             </CardItem>
@@ -137,73 +118,90 @@ export default class Admin extends Component {
 
                     console.log(key)
                     console.log(index)
+                      console.log(MyObject[key])
+                      var objectData =  MyObject[key]; 
+                      if(objectData.user==='admin'){
 
-                    return(
-                      <CardItem>
+                        return(
+                          <CardItem>
+    
+                           <Body>
+                          <Text> Name : {objectData.Fname}  {objectData.lName}</Text>
+                          <Text> Email : {objectData.mail}  </Text>
+                          <Text> Company Name : {objectData.CompName}  </Text>
+                            </Body>
+                            <Left >
+  
+    <Button primary onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'normal'})}}><Text>normal</Text></Button>
+    <Button danger   onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button>
+    
+    </Left>
+                          </CardItem>
+                        )
 
-                       <Body>
-                      <Text> hy sdofhs s;idbf sdif </Text>
-                        </Body>
-                        <Left >
-<Button primary><Text>become Admin</Text></Button>
-<Button Danger><Text>Delete</Text></Button>
 
-</Left>
-                      </CardItem>
-                    )
+                      }
+                    
 
                  })
 
-                //  (function(){
-                  //  console.log('cheking 1')
-                  //  console.log(myArray)
-                  //  console.log(myArray[0])
-                  //  console.log(myThis.state.myArray)
-                  // var a = myThis.state.myArray[0]
-                  // console.log(a)
-                  //  return( <Text>suhdhsi</Text> )
+               
                 
-                 
-                  //  for(var key in a) {
-                  //    if(a.hasOwnProperty(key)) {
-                  //      console.log(key)
-                  //      console.log(a[key])
-                  //      console.log('cheking 2')
-                  //       // return(
-                  //       //   <CardItem>
-                  //       //       <Body>
-                  //       //         <Text> hy sdofhs s;idbf sdif </Text>
-                  //       //       </Body>
-                  //       //     </CardItem>
-                  //       // )
-                  //   }
-                  // }
-                //  }())
                  
                 }
 
-            <CardItem footer>
-              <Text>GeekyAnts</Text>
-            </CardItem>
+           
+         </Card>
+         <Card>
+<CardItem header>
+<Text >Normal users</Text>
+
+</CardItem>
+{
+
+               
+  // console.log(a)
+  nativeObj.keys(MyObject).map(function(key, index) {
+
+    console.log(key)
+    console.log(index)
+      console.log(MyObject[key])
+      var objectData =  MyObject[key]; 
+      if(objectData.user==='normal'){
+
+        return(
+          <CardItem>
+
+           <Body>
+          <Text> Name : {objectData.Fname}  {objectData.lName}</Text>
+          <Text> email : {objectData.mail}  </Text>
+          <Text> company Name : {objectData.CompName}  </Text>
+            </Body>
+            <Left >
+<Button danger onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'Admin'})}}><Text>Admin</Text></Button>
+<Button  primary  onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button>
+
+</Left>
+          </CardItem>
+        )
+
+
+      }
+    
+
+ })
+
+
+
+ 
+}
+
+
          </Card>
         </Content>
       </Container>
         
-//         <View >
-//         <Text >
-//           <Text style={styles.titleText} >
-         
-//             Admin
-//           </Text>
-//           <Text >
-//             {this.state.bodyText}
-//           </Text>
-//         </Text>
 
-//         <ButtonRoundBlue text="LogOut" onPress={() => this.check()}
-// />
-
-        // </View>
       );
     }
   }

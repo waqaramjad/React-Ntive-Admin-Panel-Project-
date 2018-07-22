@@ -50,7 +50,8 @@ export default class SignIn extends Component {
                 console.log('inside')
                 alert('Login Success')
                 myNavigator.push({
-                  title: 'Admin'
+                  title: 'home', 
+                  userUID : signedinUser.user.uid
               })
                
                }
@@ -58,7 +59,8 @@ export default class SignIn extends Component {
                 console.log('else')
                 alert('Login fail')
                 myNavigator.push({
-                  title: 'home'
+                  title: 'home' , 
+                 
               })
 
                }
