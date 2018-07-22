@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View,AppRegistry, FlatList,  TouchableOpacity, Dimensions, StatusBar, Image, Text, Button, Modal } from 'react-native';
+import { StyleSheet, View,AppRegistry, FlatList,  TouchableOpacity, Dimensions, StatusBar, Image, Text, Modal } from 'react-native';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 import firebase from 'firebase';
 import { Navigator } from 'react-native-deprecated-custom-components'
 import {Actions} from "react-native-router-flux";
 import {ButtonRoundBlue, IconInput}  from "@controls";
 // import Card from 
-import { Container, Header, Content, Card, CardItem, Body } from "native-base";
+import { Container, Header, Content, Card, CardItem,Right, Left,  Button ,  Body } from "native-base";
 
 const {width, height} = Dimensions.get('window')
 // var  myArray = [];
@@ -134,11 +134,21 @@ export default class Admin extends Component {
                
                   // console.log(a)
                   nativeObj.keys(MyObject).map(function(key, index) {
+
+                    console.log(key)
+                    console.log(index)
+
                     return(
                       <CardItem>
+
                        <Body>
                       <Text> hy sdofhs s;idbf sdif </Text>
                         </Body>
+                        <Left >
+<Button primary><Text>become Admin</Text></Button>
+<Button Danger><Text>Delete</Text></Button>
+
+</Left>
                       </CardItem>
                     )
 
