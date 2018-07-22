@@ -14,8 +14,22 @@ export default class Home extends Component {
     super(props);
     this.state = {
       titleText: "Home Screen",
-      bodyText: 'React Native lets you build mobile apps using only JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components.'
+      bodyText: 'React Native lets you build mobile apps using only JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components.',
+    ProfileData :{}
     };
+  }
+
+  componentWillMount(){
+var myValue ;
+var myThis = this 
+var myUId = this.props.userUID;
+    // firebase.database().ref('/users/'+myUId).once('value').then(function(snapshot) {
+    firebase.database().ref('/users/1ICOrUKmtOQZxXgZBSLKoVNnCps1').once('value').then(function(snapshot) {
+                   myValue= snapshot.val()  
+      myThis.setState({ProfileData : myValue})
+
+      
+    })
   }
   check= () =>{
 
@@ -28,7 +42,9 @@ export default class Home extends Component {
     render() {
 
       console.log(this.props)
-      var myUId = this.props.userUID;
+     
+      console.log(this.state.ProfileData)
+      var objectData= this.state.ProfileData
       return (
         <Container>
        
@@ -38,42 +54,22 @@ export default class Home extends Component {
               <Text >Profile</Text>
             </CardItem>
            
-            {
-
-               
-                  // console.log(a)
-                  // nativeObj.keys(MyObject).map(function(key, index) {
-
-                    // console.log(key)
-                    // console.log(index)
-                    //   console.log(MyObject[key])
-                    //   var objectData =  MyObject[key]; 
-                    //   if(objectData.user==='admin'){
-
-                    firebase.database().ref('/users/'+myUId).once('value').then(function(snapshot) {
-                     
-                      console.log( snapshot.val())
-                      
-                    })
-
-    //                     return(
-    //                       <CardItem>
+            
+            <CardItem>
     
-    //                        <Body>
-    //                       <Text> Name : {objectData.Fname}  {objectData.lName}</Text>
-    //                       <Text> Email : {objectData.mail}  </Text>
-    //                       <Text> Company Name : {objectData.CompName}  </Text>
-    //                         </Body>
-    //                         <Left >
-  
-    // <Button primary onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'normal'})}}><Text>normal</Text></Button>
-    // <Button danger   onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button>
+    <Body>
+   <Text> Name : {objectData.Fname}  {objectData.lName}</Text>
+   <Text> Email : {objectData.mail}  </Text>
+   <Text> Company Name : {objectData.CompName}  </Text>
+     </Body>
+     <Left >
+
+{/* <Button primary onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'normal'})}}><Text>normal</Text></Button> */}
+{/* <Button danger   onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button> */}
+
+</Left>
+   </CardItem>
     
-    // </Left>
-    //                       </CardItem>
-    //                     )
-
-
                       
                     
 
@@ -82,7 +78,7 @@ export default class Home extends Component {
                
                 
                  
-                }
+                
 
            
          </Card>
