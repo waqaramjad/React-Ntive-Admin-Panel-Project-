@@ -38,7 +38,7 @@ export default class SignIn extends Component {
                var checkForUser = snapshot.val()
                console.log(checkForUser.user)
               //  var checking = checkForUser.user
-               var checking = 'home'
+               var checking = 'admin'
                console.log(checking)
                console.log('checking')
                console.log('navigator ')
