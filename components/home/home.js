@@ -6,7 +6,7 @@ import { Navigator } from 'react-native-deprecated-custom-components'
 import {Actions} from "react-native-router-flux";
 import {ButtonRoundBlue, IconInput}  from "@controls";
 import { Container, Header, Content, Card, CardItem,Right, Left,  Button ,  Body } from "native-base";
-
+import styles  from './App.scss'
 // const {width, height} = Dimensions.get('window')
 
 export default class Home extends Component { 
@@ -23,8 +23,7 @@ export default class Home extends Component {
 var myValue ;
 var myThis = this 
 var myUId = this.props.userUID;
-    // firebase.database().ref('/users/'+myUId).once('value').then(function(snapshot) {
-    firebase.database().ref('/users/1ICOrUKmtOQZxXgZBSLKoVNnCps1').once('value').then(function(snapshot) {
+    firebase.database().ref('/users/'+myUId).once('value').then(function(snapshot) {
                    myValue= snapshot.val()  
       myThis.setState({ProfileData : myValue})
 
@@ -50,17 +49,18 @@ var myUId = this.props.userUID;
        
         <Content>
           <Card>
-            <CardItem header>
-              <Text >Profile</Text>
+            <CardItem header style={styles.header}>
+              <Text style={styles.headerText}>Profile</Text>
             </CardItem>
            
             
             <CardItem>
     
-    <Body>
-   <Text> Name : {objectData.Fname}  {objectData.lName}</Text>
-   <Text> Email : {objectData.mail}  </Text>
-   <Text> Company Name : {objectData.CompName}  </Text>
+    <Body >
+   <Text style={styles.contentText}> Name : {objectData.Fname}  {objectData.lName}</Text>
+   <Text style={styles.contentText}> Email : {objectData.mail}  </Text>
+   <Text style={styles.contentText}> Company Name : {objectData.CompName}  </Text>
+   <Text style={styles.contentText}> User Type : {objectData.user}  </Text>
      </Body>
      <Left >
 
@@ -89,12 +89,12 @@ var myUId = this.props.userUID;
     }
   }
   
-  const styles = StyleSheet.create({
-    baseText: {
-      fontFamily: 'Cochin',
-    },
-    titleText: {
-      fontSize: 30,
-      fontWeight: 'bold',
-    },
-  });
+  // const styles = StyleSheet.create({
+  //   baseText: {
+  //     fontFamily: 'Cochin',
+  //   },
+  //   titleText: {
+  //     fontSize: 30,
+  //     fontWeight: 'bold',
+  //   },
+  // });
