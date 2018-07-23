@@ -41,7 +41,9 @@ export default class SignUp extends Component {
 
           mail : userEmail,
           pass : userPassword , 
-          cnfrmPassword : cnfrmPass
+          cnfrmPassword : cnfrmPass , 
+          user:'normal'
+
         }
         var str1 = userPassword;
     var str2 = cnfrmPass;
@@ -56,9 +58,9 @@ export default class SignUp extends Component {
         }
         else{
 
-        var userEmail1 = 'pp@p.com'
-        var userPassword1 = '000000'
-        firebase.auth().createUserWithEmailAndPassword(userEmail1,userPassword1)
+        // var userEmail1 = 'pp@p.com'
+        // var userPassword1 = '000000'
+        firebase.auth().createUserWithEmailAndPassword(userEmail,userPassword)
             .then((createdUser) => {
                 alert('signed up successfully');
                 console.log(createdUser.user.uid)

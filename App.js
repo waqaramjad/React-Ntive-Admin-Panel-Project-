@@ -21,7 +21,7 @@ export default class UrbanDictionary extends Component {
     return ( <
       Navigator initialRoute = {
         {
-          title: 'home',
+          title: 'Admin',
           index: 0
         }
       }

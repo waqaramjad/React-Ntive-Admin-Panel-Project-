@@ -6,7 +6,9 @@ import { Navigator } from 'react-native-deprecated-custom-components'
 import {Actions} from "react-native-router-flux";
 import {ButtonRoundBlue, IconInput}  from "@controls";
 // import Card from 
-import { Container, Header, Content, Card, CardItem,Right, Left,  Button ,  Body } from "native-base";
+import styles  from './admin.scss'
+
+import { Container, Header, Content,Title,  Card, CardItem,Right, Left,  Button ,  Body } from "native-base";
 
 const {width, height} = Dimensions.get('window')
 // var  myArray = [];
@@ -17,9 +19,9 @@ export default class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      titleText: "Admin Screen",
-      myArray : {} , 
-      bodyText: 'React Native lets you build mobile apps using only JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components.'
+     
+      myArray : {} 
+    
     };
 
     // this.go = this.go.bind(this)
@@ -96,20 +98,21 @@ export default class Admin extends Component {
         <Container>
         {/* <Header > <Text style={{color:'black'}}>Admin Panel </Text> </Header> */}
         {/* <Header > iugiugigi  </Header> */}
-      
+        <Header>
+          
+          <Body>
+           <Text style={styles.mainNav}>Admin Panel</Text>
+          </Body>
+          <Right />
+        </Header>
         <Content>
+
           <Card>
-            <CardItem header>
-              <Text >Admin users</Text>
+            
+            <CardItem header style={styles.header}>
+              <Text style={styles.headerText}>Admin users</Text>
             </CardItem>
-            <CardItem>
-              <Body>
-               
-                <Text>
-                  ousfbosdfs 
-                </Text>
-              </Body>
-            </CardItem>
+         
             {
 
                
@@ -120,7 +123,7 @@ export default class Admin extends Component {
                     console.log(index)
                       console.log(MyObject[key])
                       var objectData =  MyObject[key]; 
-                      if(objectData.user==='admin'){
+                      if(objectData.user==='Admin'){
 
                         return(
                           <CardItem>
@@ -153,8 +156,8 @@ export default class Admin extends Component {
            
          </Card>
          <Card>
-<CardItem header>
-<Text >Normal users</Text>
+<CardItem header style={styles.header}>
+<Text style={styles.headerText}>Normal users</Text>
 
 </CardItem>
 {
@@ -178,8 +181,8 @@ export default class Admin extends Component {
           <Text> company Name : {objectData.CompName}  </Text>
             </Body>
             <Left >
-<Button danger onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'Admin'})}}><Text>Admin</Text></Button>
-<Button  primary  onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button>
+<Button primary onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'Admin'})}}><Text>Admin</Text></Button>
+<Button  danger  onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button>
 
 </Left>
           </CardItem>
@@ -206,12 +209,4 @@ export default class Admin extends Component {
     }
   }
   
-  const styles = StyleSheet.create({
-    baseText: {
-      fontFamily: 'Cochin',
-    },
-    titleText: {
-      fontSize: 30,
-      fontWeight: 'bold',
-    },
-  });
+ 
