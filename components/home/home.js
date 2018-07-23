@@ -24,6 +24,7 @@ var myValue ;
 var myThis = this 
 var myUId = this.props.userUID;
     firebase.database().ref('/users/'+myUId).once('value').then(function(snapshot) {
+    // firebase.database().ref('/users/anPcKVe4aFU5PeQoEo5KztUDTqb2').once('value').then(function(snapshot) {
                    myValue= snapshot.val()  
       myThis.setState({ProfileData : myValue})
 
@@ -46,28 +47,32 @@ var myUId = this.props.userUID;
       var objectData= this.state.ProfileData
       return (
         <Container>
-       
+       <Header>
+          
+          <Body>
+           <Text style={styles.mainNav}>Profile</Text>
+          </Body>
+          <Right />
+        </Header>
         <Content>
           <Card>
-            <CardItem header style={styles.header}>
-              <Text style={styles.headerText}>Profile</Text>
-            </CardItem>
+          
            
             
             <CardItem>
-    
+    {/* <Right/> */}
     <Body >
    <Text style={styles.contentText}> Name : {objectData.Fname}  {objectData.lName}</Text>
    <Text style={styles.contentText}> Email : {objectData.mail}  </Text>
    <Text style={styles.contentText}> Company Name : {objectData.CompName}  </Text>
    <Text style={styles.contentText}> User Type : {objectData.user}  </Text>
      </Body>
-     <Left >
+     {/* <Left/>  */}
 
 {/* <Button primary onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'normal'})}}><Text>normal</Text></Button> */}
 {/* <Button danger   onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button> */}
 
-</Left>
+{/* </Left> */}
    </CardItem>
     
                       
@@ -82,6 +87,8 @@ var myUId = this.props.userUID;
 
            
          </Card>
+         <ButtonRoundBlue text="LogOut" onPress={() => this.check()}
+/>
                 </Content>
       </Container>
 

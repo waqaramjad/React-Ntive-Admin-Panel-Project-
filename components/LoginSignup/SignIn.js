@@ -24,9 +24,9 @@ export default class SignIn extends Component {
 
 	 signinAction = () => {
     // return dispatch => {
-      var userEmail = 'ww@prtxdf.com'
-      var userPassword = '000000'
-			// const {userEmail,userPassword} = this.state;
+      // var userEmail = 'ww@prtxdf.com'
+      // var userPassword = '000000'
+			const {userEmail,userPassword} = this.state;
       var myNavigator = 	this.props.prop.navigator
 
 			// console.log(myNavigator)
@@ -37,32 +37,36 @@ export default class SignIn extends Component {
               firebase.database().ref('users/'+signedinUser.user.uid+'/' ).once('value').then(function(snapshot) {
                var checkForUser = snapshot.val()
                console.log(checkForUser.user)
-              //  var checking = checkForUser.user
-               var checking = 'admin'
+               var checking = checkForUser.user
+              //  var checking = 'admin'
                console.log(checking)
                console.log('checking')
                console.log('navigator ')
                
 
               
-               if(checking=='admin')
+               if(checking=='admin'||checking=='master')
                {
                 console.log('inside')
                 alert('Login Success')
                 myNavigator.push({
-                  title: 'home', 
+                  title: 'Admin', 
                   userUID : signedinUser.user.uid
               })
                
                }
-               else if(checking=='home'){
+               else if(checking=='normal'){
                 console.log('else')
-                alert('Login fail')
+                alert('Login Success')
                 myNavigator.push({
                   title: 'home' , 
-                 
+                  userUID : signedinUser.user.uid
               })
 
+
+               }
+               else{
+                 alert('Login Failed ')
                }
                 // console.log(snapshot.val())
              

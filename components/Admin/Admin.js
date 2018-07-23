@@ -6,6 +6,7 @@ import { Navigator } from 'react-native-deprecated-custom-components'
 import {Actions} from "react-native-router-flux";
 import {ButtonRoundBlue, IconInput}  from "@controls";
 // import Card from 
+
 import styles  from './admin.scss'
 
 import { Container, Header, Content,Title,  Card, CardItem,Right, Left,  Button ,  Body } from "native-base";
@@ -103,12 +104,49 @@ export default class Admin extends Component {
           <Body>
            <Text style={styles.mainNav}>Admin Panel</Text>
           </Body>
-          <Right />
+          <Right> 
+          <Button danger  onPress={() => this.check()}><Text>Sign Out </Text></Button>
+
+          </Right> 
         </Header>
         <Content>
 
           <Card>
-            
+          {
+
+               
+// console.log(a)
+nativeObj.keys(MyObject).map(function(key, index) {
+
+  console.log(key)
+  console.log(index)
+    console.log(MyObject[key])
+    var objectData =  MyObject[key]; 
+    if(objectData.user==='master'){
+
+      return(
+        <CardItem>
+
+         <Body>
+        <Text  style={styles.contentText}> Name : {objectData.Fname}  {objectData.lName}</Text>
+        <Text  style={styles.contentText}> Email : {objectData.mail}  </Text>
+        <Text  style={styles.contentText}> Company Name : {objectData.CompName}  </Text>
+        <Text  style={styles.contentText}> User type : master</Text>
+          </Body>
+          
+        </CardItem>
+      )
+
+
+    }
+  
+
+})
+
+
+
+
+}
             <CardItem header style={styles.header}>
               <Text style={styles.headerText}>Admin users</Text>
             </CardItem>
@@ -135,7 +173,7 @@ export default class Admin extends Component {
                             </Body>
                             <Left >
   
-    <Button primary onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'normal'})}}><Text>normal</Text></Button>
+    <Button primary style={styles.listbutton} onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'normal'})}}><Text style={styles.btnText}>normal</Text></Button>
     <Button danger   onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button>
     
     </Left>
@@ -181,7 +219,7 @@ export default class Admin extends Component {
           <Text> company Name : {objectData.CompName}  </Text>
             </Body>
             <Left >
-<Button primary onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'Admin'})}}><Text>Admin</Text></Button>
+<Button primary style={styles.listbutton} onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'Admin'})}}><Text style={styles.btnText}>Admin</Text></Button>
 <Button  danger  onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button>
 
 </Left>
