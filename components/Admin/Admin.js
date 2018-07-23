@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { StyleSheet, View,AppRegistry, FlatList,  TouchableOpacity, Dimensions, StatusBar, Image, Text, Modal } from 'react-native';
-// import Icon from 'react-native-vector-icons/MaterialIcons';
 import firebase from 'firebase';
 import { Navigator } from 'react-native-deprecated-custom-components'
 import {Actions} from "react-native-router-flux";
 import {ButtonRoundBlue, IconInput}  from "@controls";
-// import Card from 
 
 import styles  from './admin.scss'
 
 import { Container, Header, Content,Title,  Card, CardItem,Right, Left,  Button ,  Body } from "native-base";
 
 const {width, height} = Dimensions.get('window')
-// var  myArray = [];
 var a ;
-// var myArray = [] 
 export default class Admin extends Component { 
 
   constructor(props) {
@@ -33,14 +29,9 @@ export default class Admin extends Component {
   var myThis = this 
   var a
       firebase.database().ref('/users/').on('value', function(snapshot) {
-        // myArray.push(snapshot.val())
-        // console.log(myArray)
         console.log(snapshot.val())
          a = snapshot.val()
-      //  var dummy = myThis.state.myArray
-      //  console.log(myState.myArray)
        console.log(this)
-      //  dummy.push(a)
         myThis.setState({myArray:a})
 
         console.log(myThis.state.myArray)
@@ -55,7 +46,6 @@ export default class Admin extends Component {
    )
 
   console.log('check')
-  // console.log(myArray)
      
 
   }
@@ -71,15 +61,11 @@ export default class Admin extends Component {
   
   checking= () =>{
 
-   console.log('my checking')
   }
   
   
     render() {
-      // console.log(myArray)
       var myThis = this ;
-      // console.log(myArray[0])
-      // this.go();
        
       this.checking();
 
@@ -97,8 +83,6 @@ export default class Admin extends Component {
       
         
         <Container>
-        {/* <Header > <Text style={{color:'black'}}>Admin Panel </Text> </Header> */}
-        {/* <Header > iugiugigi  </Header> */}
         <Header>
           
           <Body>

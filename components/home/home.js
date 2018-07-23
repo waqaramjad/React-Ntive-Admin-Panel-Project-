@@ -67,12 +67,6 @@ var myUId = this.props.userUID;
    <Text style={styles.contentText}> Company Name : {objectData.CompName}  </Text>
    <Text style={styles.contentText}> User Type : {objectData.user}  </Text>
      </Body>
-     {/* <Left/>  */}
-
-{/* <Button primary onPress={() =>{firebase.database().ref('/users/'+key+'/').update({user:'normal'})}}><Text>normal</Text></Button> */}
-{/* <Button danger   onPress={() =>{firebase.database().ref('/users/'+key).remove()}}><Text>Delete</Text></Button> */}
-
-{/* </Left> */}
    </CardItem>
     
                       
@@ -96,12 +90,4 @@ var myUId = this.props.userUID;
     }
   }
   
-  // const styles = StyleSheet.create({
-  //   baseText: {
-  //     fontFamily: 'Cochin',
-  //   },
-  //   titleText: {
-  //     fontSize: 30,
-  //     fontWeight: 'bold',
-  //   },
-  // });
+ 

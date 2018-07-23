@@ -23,9 +23,7 @@ export default class SignIn extends Component {
 	}
 
 	 signinAction = () => {
-    // return dispatch => {
-      // var userEmail = 'ww@prtxdf.com'
-      // var userPassword = '000000'
+   
 			const {userEmail,userPassword} = this.state;
       var myNavigator = 	this.props.prop.navigator
 
@@ -113,9 +111,7 @@ export default class SignIn extends Component {
 
         <ButtonRoundBlue text="Login" onPress={() => this.signinAction()}
 />
-{/* <Text style={{ color:'black'}}> Hello iuwef lodfind dlfg  siufb ei fril w fwyvf  */}
- {/* <Text style={myStyles.myClass}> Hello iuwef lodfind dlfg  siufb ei fril w fwyvf 
- </Text> */}
+
       </View>
     );
   }
