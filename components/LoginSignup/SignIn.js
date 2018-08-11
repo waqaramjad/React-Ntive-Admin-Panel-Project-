@@ -22,70 +22,7 @@ export default class SignIn extends Component {
 		}
 	}
 
-	 signinAction = () => {
-   
-			const {userEmail,userPassword} = this.state;
-      var myNavigator = 	this.props.prop.navigator
-
-			// console.log(myNavigator)
-			console.log('done')
-        firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
-            .then((signedinUser) => {
-          
-              firebase.database().ref('users/'+signedinUser.user.uid+'/' ).once('value').then(function(snapshot) {
-               var checkForUser = snapshot.val()
-               console.log(checkForUser.user)
-               var checking = checkForUser.user
-              //  var checking = 'admin'
-               console.log(checking)
-               console.log('checking')
-               console.log('navigator ')
-               
-
-              
-               if(checking=='admin'||checking=='master')
-               {
-                console.log('inside')
-                alert('Login Success')
-                myNavigator.push({
-                  title: 'Admin', 
-                  userUID : signedinUser.user.uid
-              })
-               
-               }
-               else if(checking=='normal'){
-                console.log('else')
-                alert('Login Success')
-                myNavigator.push({
-                  title: 'home' , 
-                  userUID : signedinUser.user.uid
-              })
-
-
-               }
-               else{
-                 alert('Login Failed ')
-               }
-                // console.log(snapshot.val())
-             
-             
-              });
-              console.log('check'+signedinUser.user.uid)
-
-						// 	alert('Login Success')
-						// 	this.props.prop.navigator.push({
-						// 		title: 'Admin'
-						// })
-							console.log('done 2')
-
-            }).catch((err)=>{
-              console.log(err)
-							alert(err.message)
-						})
-
-    // }
-
-}
+	
 
 
 
@@ -96,20 +33,22 @@ export default class SignIn extends Component {
     return (
       <View style={styles.container}>
         <View style={{marginTop: -15}}>
-          <IconInput 	onChangeText={userEmail => this.setState({userEmail})}
- placeholder="Username" image={require("@images/icon-user.png")}/>
+          <IconInput 	
+ placeholder="Receiver email address" image={require("@images/icon-email.png")}/>
 
-          <IconInput   secureTextEntry={true}	onChangeText={userPassword => this.setState({userPassword})}
- placeholder="Password" image={require("@images/icon-password.png")}/>
+          {/* <IconInput   secureTextEntry={true}	onChangeText={userPassword => this.setState({userPassword})}
+ placeholder="From" image={require("@images/icon-password.png")}/> */}
+          <IconInput   
+ placeholder="From" image={require("@images/icon-user.png")}/>
+          <IconInput   
+ placeholder="Add a comment here " image={require("@images/icon-password.png")}/>
+          <IconInput   
+ placeholder="Vault content" image={require("@images/icon-password.png")}/>
         </View>
 
-        <View style={{flexDirection: 'row', alignSelf: 'flex-end', marginTop: 10, marginBottom: 10}}>
-          <Text style={{color: '#aaa', marginRight: 5, fontSize: 12}}>
-            Forgot Password?
-          </Text>
-        </View>
+     
 
-        <ButtonRoundBlue text="Login" onPress={() => this.signinAction()}
+        <ButtonRoundBlue text="Build a vault and send an email"
 />
 
       </View>

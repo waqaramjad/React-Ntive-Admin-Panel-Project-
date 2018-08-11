@@ -4,21 +4,13 @@ import {View, Image, TouchableOpacity, Dimensions,} from "react-native";
 import {Actions} from "react-native-router-flux";
 import ScrollableTabView, {ScrollableTabBar} from "react-native-scrollable-tab-view";
 import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+
 import css from "@styles/style";
 import firebase from 'firebase';
 
 
 
-var config = {
-  apiKey: "AIzaSyDzefR-KVbtwUmPnETvrtRyCX_S8dDv4Cs",
-  authDomain: "templete-assigment.firebaseapp.com",
-  databaseURL: "https://templete-assigment.firebaseio.com",
-  projectId: "templete-assigment",
-  storageBucket: "templete-assigment.appspot.com",
-  messagingSenderId: "840865053120"
-};
-firebase.initializeApp(config);
+
 
 
 
@@ -39,23 +31,14 @@ export default class Login extends Component {
 
     const toolbar = (
       <View style={[css.toolbarMenu]}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <TouchableOpacity onPress={Actions.product}>
-            <Image source={require('@images/icon-back.png')}
-                   style={[css.imageIconLarge, {marginLeft: 8, width: 14}]}/>
-          </TouchableOpacity>
-        </View>
-
-        <View style={css.rowCenter}>
-          <Image style={css.logo} source={require('@images/key.png')}/>
-        </View>
+       
 
       </View>
     )
     return (
 
       <View style={css.layout}>
-        {toolbar}
+        {/* {toolbar} */}
         <ScrollableTabView
           initialPage={0}
           locked={false}
@@ -63,7 +46,7 @@ export default class Login extends Component {
 
           tabBarActiveTextColor={"#393838"}
           tabBarInactiveTextColor={"#B8B8B8"}
-          tabBarTextStyle={{fontWeight: 'normal', fontSize: 14}}
+          tabBarTextStyle={{fontWeight: 'normal', fontSize: 20}}
           style={{backgroundColor: '#ffff'}}
           contentProps={{backgroundColor: '#ffff', marginTop: 0}}
           renderTabBar={() => <ScrollableTabBar
@@ -73,10 +56,10 @@ export default class Login extends Component {
             tabStyle={{paddingBottom: 0, borderBottomWidth: 0, paddingTop: 0, paddingLeft: 50, paddingRight: 50}}
           />}
         >
-          <SignIn  tabLabel="Login"
-          prop={this.props}
+          <SignIn  tabLabel=" Klerk.io"
+         
           />
-          <SignUp tabLabel="Sign Up"/>
+         
         </ScrollableTabView>
       </View>
     );
